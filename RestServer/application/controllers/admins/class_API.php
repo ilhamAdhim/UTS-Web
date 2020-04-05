@@ -36,12 +36,12 @@ class class_API extends REST_Controller {
         if($this->admin_model->createClass($data) > 0){
             $this->response([
                 'status' => true,
-                'message' => 'Research Group has been updated'
+                'message' => 'Class has been created'
             ],REST_Controller::HTTP_OK);
         }else{
             $this->response([
                 'status' => false,
-                'message' => 'failed to update data'
+                'message' => 'failed to created Class'
             ],REST_Controller::HTTP_BAD_REQUEST);
         }
     }
@@ -58,12 +58,12 @@ class class_API extends REST_Controller {
          if($this->admin_model->updateClass($data,$id) > 0){
              $this->response([
                  'status' => true,
-                 'message' => 'Research Group has been updated'
+                 'message' => 'Class has been updated'
              ],REST_Controller::HTTP_OK);
          }else{
              $this->response([
                  'status' => false,
-                 'message' => 'failed to update data'
+                 'message' => 'failed to update Class'
              ],REST_Controller::HTTP_BAD_REQUEST);
          }
      }
@@ -79,7 +79,7 @@ class class_API extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST);
         }else{
             if ($this->admin_model->deleteClass($cl_id) > 0) {
-                echo 'ok';
+                 ;
                 $this->response([
                     'status'    => true,
                     'id'        => $cl_id,

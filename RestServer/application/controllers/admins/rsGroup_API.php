@@ -22,7 +22,15 @@ Class rsGroup_API extends REST_Controller {
             'status' => true,
             'data' => $this->admin_model->getResearchGroups()
         ];
-        $this->response($res, 200);
+
+        if($res['data'] !== null){
+            $this->response($res, 200);
+        }else{
+            $this->response([
+                'status' => false,
+                'message' => 'Not found'
+            ],REST_CONTROLLER::HTTP_BAD_REQUEST);
+        }
     }
 
     function index_post() {
@@ -31,15 +39,15 @@ Class rsGroup_API extends REST_Controller {
             'research'  => $this->post('research'),
         ];
         
-        if($this->admin_model->createResearchGroups($data) > 0){
+        if($this->admin_model->createResearchGroups($data)){
             $this->response([
                 'status' => true,
-                'message' => 'Research Group has been updated'
+                'message' => 'Research Group has been created'
             ],REST_Controller::HTTP_OK);
         }else{
             $this->response([
                 'status' => false,
-                'message' => 'failed to create data'
+                'message' => 'failed to create Research Group'
             ],REST_Controller::HTTP_BAD_REQUEST);
         }
     }
@@ -51,26 +59,21 @@ Class rsGroup_API extends REST_Controller {
             'research'  => $this->put('research'),
         ];
         
-        if(!$this->put('rs_id')){
+
+        if($this->admin_model->updateResearchGroup($data) > 0){
             $this->response([
                 'status' => true,
-                'message' => 'Rs id is null'
+                'message' => 'Research Group has been updated'
             ],REST_Controller::HTTP_OK);
+        }else{
+            $this->response([
+                'status' => false,
+                'message' => 'Failed to update Research Group'
+            ],REST_Controller::HTTP_BAD_REQUEST);
         }
-
-         if($this->admin_model->updateResearchGroup($data) > 0){
-             $this->response([
-                 'status' => true,
-                 'message' => 'Research Group has been updated'
-             ],REST_Controller::HTTP_OK);
-         }else{
-             $this->response([
-                 'status' => false,
-                 'message' => 'Failed to update data'
-             ],REST_Controller::HTTP_BAD_REQUEST);
-         }
      }
 
+     
      
     public function index_delete(){
         $rs_id = $this->delete('rs_id');
@@ -81,15 +84,13 @@ Class rsGroup_API extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST);
         }else{
             if ($this->admin_model->deleteResearchGroup($rs_id) > 0) {
-                echo 'ok';
                 $this->response([
                     'status'    => true,
                     'id'        => $rs_id,
-                    'message'   => 'deleted'
+                    'message'   => 'Research Group deleted'
                 ],REST_Controller::HTTP_OK);
                 # code...
             }else{
-                echo 'rs_id not found';
                 $this->response([
                     'status'    => false,
                     'message'   => 'rs_id not found !'

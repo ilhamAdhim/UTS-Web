@@ -40,12 +40,12 @@ class Subjects_API extends REST_Controller {
         if($this->admin_model->createSubject($data) > 0){
             $this->response([
                 'status' => true,
-                'message' => 'Research Group has been updated'
+                'message' => 'Subjects has been created'
             ],REST_Controller::HTTP_OK);
         }else{
             $this->response([
                 'status' => false,
-                'message' => 'failed to update data'
+                'message' => 'failed to created Subjects'
             ],REST_Controller::HTTP_BAD_REQUEST);
         }
     }
@@ -63,15 +63,15 @@ class Subjects_API extends REST_Controller {
             'year'          => $this->put('year')
         ];
 
-         if($this->admin_model->updateSubject($data,$id) > 0){
+         if($this->admin_model->updateSubject($data) > 0){
              $this->response([
                  'status' => true,
-                 'message' => 'Research Group has been updated'
+                 'message' => 'Subjects has been updated'
              ],REST_Controller::HTTP_OK);
          }else{
              $this->response([
                  'status' => false,
-                 'message' => 'failed to update data'
+                 'message' => 'failed to update Subjects'
              ],REST_Controller::HTTP_BAD_REQUEST);
          }
      }
@@ -86,7 +86,7 @@ class Subjects_API extends REST_Controller {
             ], REST_Controller::HTTP_BAD_REQUEST);
         }else{
             if ($this->admin_model->deleteSubject($subject_code) > 0) {
-                echo 'ok';
+                 ;
                 $this->response([
                     'status'    => true,
                     'id'        => $subject_code,

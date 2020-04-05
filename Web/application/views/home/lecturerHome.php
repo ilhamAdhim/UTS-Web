@@ -73,33 +73,4 @@
 
 
 </div>
-
-<div class="container">
-
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="holder.js/100x180/" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="holder.js/100x180/" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-          </div>
-        </div>
-        <div class="card" style="background:url('<?=base_url()?>assets/images/admin.jpg')">
-          <img class="card-img-top" src="holder.js/100x180/" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-          </div>
-        </div>
-      </div>
-
-
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores, nam sapiente expedita distinctio eos sint libero optio repudiandae in dolorum. Nam ullam vitae odit illo? At eligendi dicta quo!
 </div>
